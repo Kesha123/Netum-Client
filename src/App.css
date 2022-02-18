@@ -2,6 +2,30 @@
   text-align: center;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+
+.Cell {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid;
+}
+
+.Head {
+  border: 1px solid;
+}
+
+.ChangeBox {
+  text-align: left;
+  margin-left: 50px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
