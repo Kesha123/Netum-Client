@@ -29,7 +29,7 @@ function App() {
 
   // Fetch data for the table
    useEffect(() => {
-     fetch(query)
+     fetch(api)
      .then(response => response.json())
      .then(data => setPeople(data))
    })
