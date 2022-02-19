@@ -5,6 +5,8 @@ import './App.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
+const api = 'https://netum-api.herokuapp.com/api/person';
+
 function App() {
 
   // Vars for customization
@@ -30,11 +32,11 @@ function App() {
      fetch(query)
      .then(response => response.json())
      .then(data => setPeople(data))
-   })   
+   })
 
   // Queries:
   const addPerson = () => {
-    fetch('http://localhost:3000/api/person', {
+    fetch(api, {
       method: 'POST',      
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({firstname:person.firstname, lastname:person.lastname, age:person.age}),})
@@ -43,7 +45,7 @@ function App() {
   }
 
   const deletePerson = (id) => {
-    fetch(`http://localhost:3000/api/person/${id}`, {
+    fetch(`${api}/${id}`, {
       method: 'DELETE',}).then(response => response.text())
   }
 
@@ -51,7 +53,7 @@ function App() {
     let firstname = prompt('Please enter first name:', person.firstname);
     let lastname = prompt('Please enter last name:', person.lastname);
     let age = prompt('Please enter age:', person.age);
-    fetch(`http://localhost:3000/api/person/${id}`, {
+    fetch(`${api}/${id}`, {
       method: 'PUT',      
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({firstname:firstname, lastname:lastname, age:Number(age)}),})
@@ -60,7 +62,7 @@ function App() {
 
   // Change query to get sorted data
   const sort = (column, order) => {
-    setQuery(`http://localhost:3000/api/person/${column}/${order}`)
+    setQuery(`${api}/${column}/${order}`)
   }
   
   // Customize table layout
@@ -104,8 +106,6 @@ function App() {
   return (
     <div className="App">
       <br></br>
-      Head: {headTextColor.background}<br></br>
-      Cell: {cellTextColor.background}<br></br>
       <input placeholder="First name:" name="firstname" value={person.firstname} onChange={inputPerson} />
       <input placeholder="Last name:" name="lastname" value={person.lastname} onChange={inputPerson}/>
       <input placeholder="Age:" name="age" value={person.age} onChange={inputPerson}/>
