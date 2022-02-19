@@ -10,7 +10,7 @@ const api = 'https://netum-api.herokuapp.com/api/person';
 function App() {
 
   // Vars for customization
-  const [query, setQuery] = useState('http://localhost:3000/api/person');
+  const [query, setQuery] = useState(api);
   const [person, setPerson] = useState({firstname:'', lastname:'', age:0});
   const [people, setPeople] = useState([]);
   const [cellColor, setCellColor] = useState('');
@@ -29,7 +29,7 @@ function App() {
 
   // Fetch data for the table
    useEffect(() => {
-     fetch(api)
+     fetch(query)
      .then(response => response.json())
      .then(data => setPeople(data))
    })
