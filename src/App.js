@@ -36,6 +36,14 @@ function App() {
 
   // Queries:
   const addPerson = () => {
+
+    if (!(isNaN(document.getElementById('age').value))) {
+      alert("New person has been added.");
+    }
+    else {
+      alert("You provided non-numeric age.");
+    }
+
     fetch(api, {
       method: 'POST',      
       headers: {'Content-Type': 'application/json'},
@@ -108,7 +116,7 @@ function App() {
       <br></br>
       <input placeholder="First name:" name="firstname" value={person.firstname} onChange={inputPerson} />
       <input placeholder="Last name:" name="lastname" value={person.lastname} onChange={inputPerson}/>
-      <input placeholder="Age:" name="age" value={person.age} onChange={inputPerson}/>
+      <input placeholder="Age:" name="age" id="age" value={person.age} onChange={inputPerson}/>
       <button onClick={addPerson}>Add person</button><br></br>     
       <br></br> 
       <table id='content'>
